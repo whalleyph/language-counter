@@ -1,12 +1,12 @@
 #root {
-  max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background: black;
 }
 
 .language-content {
-  background-color: #414141;
+  background: #414141;
   padding: 2rem;
   border-radius: 2rem;
 }
