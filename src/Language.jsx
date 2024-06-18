@@ -3,8 +3,8 @@ import { englishWords, mandarinWords } from "./LanguageData";
 
 export default function Language() {
   const [number, setNumber] = React.useState(0);
-  const englishWord = englishWords[number];
-  const mandarinWord = mandarinWords[number];
+  const [englishWord, setEnglishWord] = React.useState(true);
+  const [mandarinWord, setMandarinWord] = React.useState(true);
 
   const leftButton = () =>
     setNumber((prevNumber) => {
@@ -24,14 +24,27 @@ export default function Language() {
       }
     });
 
-  const englishVisibility = () =>
-    setNumber((prevNumber) => {
-      if (englishWords[prevNumber] === englishWord) {
-        englishWord = "❓";
-      } else {
-        return prevNumber;
-      }
-    });
+  const englishVisibility = () => {
+    englishWord ? setEnglishWord(false) : setEnglishWord(true);
+  };
+
+  const mandarinVisibility = () => {
+    mandarinWord ? setMandarinWord(false) : setMandarinWord(true);
+  };
+
+  const randomEnglish = () => {
+    const randomNumber = Math.floor(Math.random()*11)
+    setNumber(randomNumber)
+    setMandarinWord(false)
+    setEnglishWord(true)
+  }
+
+  const randomMandarin = () => {
+    const randomNumber = Math.floor(Math.random()*11)
+    setNumber(randomNumber)
+    setMandarinWord(true)
+    setEnglishWord(false)
+  }
 
   return (
     <div className="language-content">
@@ -40,14 +53,15 @@ export default function Language() {
         <button onClick={leftButton}>Left</button>
         <button onClick={RightButton}>Right</button>
         <button onClick={englishVisibility}>Show/hide English</button>
-        <button>Show/hide Mandarin</button>
-        <button>Random (English)</button>
-        <button>Random (Mandarin)</button>
+        <button onClick={mandarinVisibility}>Show/hide Mandarin</button>
+        <button onClick={randomEnglish}>Random (English)</button>
+        <button onClick={randomMandarin}>Random (Mandarin)</button>
       </div>
       <div className="numbers">
-        <p>{englishWord}</p>
-        <p>{mandarinWord}</p>
-        <p>{number}</p>
+        <p>{englishWord ? englishWords[number] : "❓"}</p>
+        <p>{mandarinWord ? mandarinWords[number] : "❓"}</p>
+        {/* Debug Number ↓ */}
+        {/* <p>{number}</p> */}
       </div>
     </div>
   );
