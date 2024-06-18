@@ -33,29 +33,41 @@ export default function Language() {
   };
 
   const randomEnglish = () => {
-    const randomNumber = Math.floor(Math.random()*11)
-    setNumber(randomNumber)
-    setMandarinWord(false)
-    setEnglishWord(true)
-  }
+    const randomNumber = Math.floor(Math.random() * 11);
+    setNumber(randomNumber);
+    setMandarinWord(false);
+    setEnglishWord(true);
+  };
 
   const randomMandarin = () => {
-    const randomNumber = Math.floor(Math.random()*11)
-    setNumber(randomNumber)
-    setMandarinWord(true)
-    setEnglishWord(false)
-  }
+    const randomNumber = Math.floor(Math.random() * 11);
+    setNumber(randomNumber);
+    setMandarinWord(true);
+    setEnglishWord(false);
+  };
 
   return (
     <div className="language-content">
       <h1>Language practice-counting</h1>
       <div className="buttons">
-        <button onClick={leftButton}>Left</button>
-        <button onClick={RightButton}>Right</button>
-        <button onClick={englishVisibility}>Show/hide English</button>
-        <button onClick={mandarinVisibility}>Show/hide Mandarin</button>
-        <button onClick={randomEnglish}>Random (English)</button>
-        <button onClick={randomMandarin}>Random (Mandarin)</button>
+        <button className="button-style" onClick={leftButton}>
+          Left
+        </button>
+        <button className="button-style" onClick={RightButton}>
+          Right
+        </button>
+        <button className="button-style" onClick={englishVisibility}>
+          Show/hide English
+        </button>
+        <button className="button-style" onClick={mandarinVisibility}>
+          Show/hide Mandarin
+        </button>
+        <button className="button-style" onClick={randomEnglish}>
+          Random (English)
+        </button>
+        <button className="button-style" onClick={randomMandarin}>
+          Random (Mandarin)
+        </button>
       </div>
       <div className="numbers">
         <p>{englishWord ? englishWords[number] : "❓"}</p>
